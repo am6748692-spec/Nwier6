@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 26.2.5.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="00:00:00"/>
+	<style type="text/css">
+		@page { size: 8.27in 11.69in; margin: 0.79in }
+		p { margin-bottom: 0.1in; line-height: 115%; background: transparent }
+		pre { background: transparent }
+		pre.western { font-family: "Liberation Mono", monospace; font-size: 10pt }
+		pre.cjk { font-family: "Noto Sans Mono CJK SC", monospace; font-size: 10pt }
+		pre.ctl { font-family: "Liberation Mono", monospace; font-size: 10pt }
+	</style>
+</head>
+<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><pre class="western">(function(){
+'use strict';
+
+const ADMIN={
+  user:'eslamadmin012@',
+  pass:'eslammaged012@',
+  searchCode:'01022537296012@'
+};
+const STORE='nawair_v4';
+
+const CURRICULUM={
+'<span lang="hi-IN">اللغة العربية</span>':{icon:'📖',lessons:[
+{name:'<span lang="hi-IN">النحو — المبتدأ والخبر</span>',content:'<span lang="hi-IN">المبتدأ هو الاسم المرفوع الذي نبدأ به الجملة الاسمية. الخبر هو الجزء الذي يكمل معنى المبتدأ. مثال: الطالبُ مجتهدٌ</span>.',questions:[
+{text:'<span lang="hi-IN">ما المبتدأ في &quot;الجوُّ جميلٌ&quot;؟</span>',options:['<span lang="hi-IN">الجوُّ','جميلٌ','الجملة كلها','لا يوجد</span>'],correct:0},
+{text:'<span lang="hi-IN">ما نوع الخبر في &quot;الطالبُ مجتهدٌ&quot;؟</span>',options:['<span lang="hi-IN">مفرد','جملة','شبه جملة','لا شيء</span>'],correct:0}]},
+{name:'<span lang="hi-IN">البلاغة — التشبيه</span>',content:'<span lang="hi-IN">التشبيه هو عقد مقارنة بين شيئين يشتركان في صفة. أركانه: المشبه، المشبه به، أداة التشبيه، وجه الشبه</span>.',questions:[
+{text:'<span lang="hi-IN">في &quot;العلمُ كالنورِ&quot; ما نوع التشبيه؟</span>',options:['<span lang="hi-IN">تام','مؤكد','مجمل','بليغ</span>'],correct:0},
+{text:'<span lang="hi-IN">كم ركن للتشبيه؟</span>',options:['2','3','4','5'],correct:2}]}]},
+'<span lang="hi-IN">اللغة الإنجليزية</span>':{icon:'🇬🇧',lessons:[
+{name:'Present Simple',content:'The present simple is used for habits and facts. Form: Subject + base verb (add -s for he/she/it).',questions:[
+{text:'She ___ to school every day.',options:['go','goes','going','gone'],correct:1},
+{text:'They ___ football on Fridays.',options:['plays','play','playing','played'],correct:1}]},
+{name:'Past Simple',content:'Used for completed actions in the past.',questions:[
+{text:'She ___ to Paris last year.',options:['go','goes','went','gone'],correct:2}]}]},
+'<span lang="hi-IN">الرياضيات</span>':{icon:'📐',lessons:[
+{name:'<span lang="hi-IN">الأعداد المركبة</span>',content:'<span lang="hi-IN">العدد المركب هو عدد على الصورة </span>a + bi <span lang="hi-IN">حيث </span>a <span lang="hi-IN">و </span>b <span lang="hi-IN">أعداد حقيقية، و </span>i² = -1.',questions:[
+{text:'<span lang="hi-IN">ما قيمة </span>i²<span lang="hi-IN">؟</span>',options:['1','-1','0','i'],correct:1},
+{text:'<span lang="hi-IN">ما الجزء التخيلي في 3 + 4</span>i<span lang="hi-IN">؟</span>',options:['3','4','7','i'],correct:1}]},
+{name:'<span lang="hi-IN">الهندسة التحليلية</span>',content:'<span lang="hi-IN">المسافة بين نقطتين </span>= √((x₂-x₁)² + (y₂-y₁)²).',questions:[
+{text:'<span lang="hi-IN">ما قانون المسافة؟</span>',options:['√((x₂-x₁)²+(y₂-y₁)²)','x₂-x₁','y₂-y₁','<span lang="hi-IN">الفرق</span>'],correct:0}]}]},
+'<span lang="hi-IN">العلوم المتكاملة</span>':{icon:'🔬',lessons:[
+{name:'<span lang="hi-IN">الخلية</span>',content:'<span lang="hi-IN">الخلية هي وحدة بناء الكائن الحي. تحتوي على الغشاء البلازمي والسيتوبلازم والنواة والميتوكوندريا</span>.',questions:[
+{text:'<span lang="hi-IN">ما وحدة بناء الكائن الحي؟</span>',options:['<span lang="hi-IN">النسيج','الخلية','العضو','الجهاز</span>'],correct:1},
+{text:'<span lang="hi-IN">أين يحدث التنفس الخلوي؟</span>',options:['<span lang="hi-IN">النواة','الميتوكوندريا','الغشاء','الريبوسوم</span>'],correct:1}]},
+{name:'<span lang="hi-IN">الحركة</span>',content:'<span lang="hi-IN">السرعة = المسافة / الزمن. العجلة = التغير في السرعة / الزمن</span>.',questions:[
+{text:'<span lang="hi-IN">ما وحدة قياس السرعة؟</span>',options:['<span lang="hi-IN">متر','ثانية','م/ث','م/ث²</span>'],correct:2}]}]},
+'<span lang="hi-IN">الفلسفة والمنطق</span>':{icon:'🤔',lessons:[
+{name:'<span lang="hi-IN">مقدمة في الفلسفة</span>',content:'<span lang="hi-IN">الفلسفة هي حب الحكمة، وهي البحث العقلي في المشكلات الكبرى</span>.',questions:[
+{text:'<span lang="hi-IN">ما معنى كلمة فلسفة؟</span>',options:['<span lang="hi-IN">حب المال','حب الحكمة','حب العلم','حب الفن</span>'],correct:1}]},
+{name:'<span lang="hi-IN">المنطق</span>',content:'<span lang="hi-IN">المنطق هو علم القواعد التي تعصم الذهن من الخطأ في التفكير</span>.',questions:[
+{text:'<span lang="hi-IN">ما هو المنطق؟</span>',options:['<span lang="hi-IN">علم القواعد','الرسم','الطبخ','الرياضة</span>'],correct:0}]}]},
+'<span lang="hi-IN">التاريخ</span>':{icon:'🏛️',lessons:[
+{name:'<span lang="hi-IN">الحضارة المصرية القديمة</span>',content:'<span lang="hi-IN">عصر بناة الأهرام شهد بناء الأهرامات في الدولة القديمة</span>.',questions:[
+{text:'<span lang="hi-IN">من بنى الهرم الأكبر؟</span>',options:['<span lang="hi-IN">خفرع','خوفو','منقرع','رمسيس</span>'],correct:1}]}]}
+};
+
+const $=id=&gt;document.getElementById(id);
+const esc=s=&gt;String(s||'').replace(/[&amp;&lt;&gt;&quot;']/g,c=&gt;({'&amp;':'&amp;amp;','&lt;':'&amp;lt;','&gt;':'&amp;gt;','&quot;':'&amp;quot;',&quot;'&quot;:'&amp;#39;'}[c]));
+
+function newMastery(){const m={};Object.keys(CURRICULUM).forEach(s=&gt;m[s]=0);return m;}
+
+function defaultState(){
+  const m={'<span lang="hi-IN">اللغة العربية':85,'اللغة الإنجليزية':78,'الرياضيات':45,'العلوم المتكاملة':70,'الفلسفة والمنطق':58,'التاريخ':80</span>};
+  const lm={};
+  Object.keys(CURRICULUM).forEach(s=&gt;CURRICULUM[s].lessons.forEach(l=&gt;lm[s+':'+l.name]=70));
+  return{
+    student:{id:'eslam',name:'<span lang="hi-IN">إسلام</span>',grade:'<span lang="hi-IN">خدمات</span>',username:ADMIN.user,mastery:m,lessonMastery:lm,suspended:{},
+      activity:[
+        {icon:'🎉',text:'<span lang="hi-IN">تم إنشاء الحساب</span>',type:'success',time:Date.now()-172800000},
+        {icon:'🎓',text:'<span lang="hi-IN">حصل على شهادة تقدير</span>',type:'success',time:Date.now()-86400000}],
+      lastLogin:null,createdAt:Date.now()-172800000},
+    addedStudents:[]
+  };
+}
+
+function load(){try{const raw=localStorage.getItem(STORE);if(raw)return JSON.parse(raw);}catch(e){}
+  const s=defaultState();save(s);return s;}
+function save(s){try{localStorage.setItem(STORE,JSON.stringify(s));}catch(e){}}
+
+let state=load();
+let currentUser=null;
+let quiz={subject:null,lesson:null,index:0,selected:null,answered:false,correct:0};
+
+function calcAvg(st){let sum=0,c=0;Object.keys(CURRICULUM).forEach(k=&gt;{const v=st.mastery[k];if(typeof v==='number'){sum+=v;c++;}});return c?Math.round(sum/c):0;}
+function timeAgo(ts){if(!ts)return'<span lang="hi-IN">لم يدخل بعد</span>';const d=Date.now()-ts;if(d&lt;60000)return'<span lang="hi-IN">الآن</span>';if(d&lt;3600000)return Math.floor(d/60000)+' <span lang="hi-IN">دقيقة</span>';if(d&lt;86400000)return Math.floor(d/3600000)+' <span lang="hi-IN">ساعة</span>';return new Date(ts).toLocaleDateString('ar-EG');}
+function genUser(){return 'std'+Math.floor(1000+Math.random()*9000);}
+function genPass(){const c='abcdefghjkmnpqrstuvwxyz23456789';let p='';for(let i=0;i&lt;8;i++)p+=c.charAt(Math.floor(Math.random()*c.length));return p;}
+
+/* SEARCH — icon toggle */
+window.toggleSearch=()=&gt;{
+  const input=$('search-code');
+  if(!input)return;
+  const isOpen=input.classList.contains('is-open');
+  if(isOpen){
+    input.classList.remove('is-open');
+    input.value='';
+  }else{
+    input.classList.add('is-open');
+    setTimeout(()=&gt;input.focus(),50);
+  }
+};
+
+window.onSearch=e=&gt;{
+  if(e.key==='Escape'){toggleSearch();return;}
+  if(e.key!=='Enter')return;
+  const v=($('search-code').value||'').trim();
+  if(v===ADMIN.searchCode){
+    $('search-code').value='';
+    $('search-code').classList.remove('is-open');
+    $('add-error').hidden=true;
+    $('add-name').value='';$('add-phone').value='';
+    openModal('modal-add');
+  }else if(v){
+    $('search-code').value='';
+    alert('❌ <span lang="hi-IN">الكود غير صحيح</span>');
+  }
+};
+
+window.openModal=id=&gt;{$(id).hidden=false;};
+window.closeModal=id=&gt;{$(id).hidden=true;};
+
+window.addMember=()=&gt;{
+  const err=$('add-error');err.hidden=true;
+  const name=($('add-name').value||'').trim();
+  const phone=($('add-phone').value||'').trim();
+  const grade=$('add-grade').value;
+  if(!name){err.textContent='<span lang="hi-IN">أدخل اسم الطالب</span>';err.hidden=false;return;}
+  if(!phone){err.textContent='<span lang="hi-IN">أدخل رقم التليفون</span>';err.hidden=false;return;}
+  
+  let username;let exists=true;
+  while(exists){username=genUser();exists=state.addedStudents.some(s=&gt;s.username===username)||username===ADMIN.user;}
+  const password=genPass();
+  
+  state.addedStudents.push({
+    id:'s_'+Date.now(),name,phone,grade,username,password,
+    mastery:newMastery(),lessonMastery:{},suspended:{},
+    activity:[{icon:'🎉',text:'<span lang="hi-IN">تم إنشاء الحساب</span>',type:'success',time:Date.now()}],
+    lastLogin:null,createdAt:Date.now()
+  });
+  save(state);
+  
+  closeModal('modal-add');
+  $('cred-user').textContent=username;
+  $('cred-pass').textContent=password;
+  openModal('modal-cred');
+};
+
+/* LOGIN */
+window.switchRole=role=&gt;{
+  $('panel-student').hidden=role!=='student';
+  $('panel-teacher').hidden=role!=='teacher';
+  $('tab-student').classList.toggle('role-switch__btn--active',role==='student');
+  $('tab-teacher').classList.toggle('role-switch__btn--active',role==='teacher');
+  $('student-error').hidden=true;$('teacher-error').hidden=true;
+};
+
+window.login=(e,role)=&gt;{
+  e.preventDefault();
+  const errId=role==='teacher'?'teacher-error':'student-error';
+  const uId=role==='teacher'?'teacher-username':'student-username';
+  const pId=role==='teacher'?'teacher-password':'student-password';
+  const errEl=$(errId);errEl.hidden=true;
+  const u=($(uId).value||'').trim(),p=($(pId).value||'').trim();
+  if(!u||!p){errEl.textContent='<span lang="hi-IN">أدخل البيانات كاملة</span>';errEl.hidden=false;return;}
+  
+  if(u===ADMIN.user&amp;&amp;p===ADMIN.pass){
+    currentUser={type:'main',data:state.student};
+    state.student.lastLogin=Date.now();
+    state.student.activity.unshift({icon:'🔓',text:'<span lang="hi-IN">تسجيل دخول</span>',type:'success',time:Date.now()});
+    if(state.student.activity.length&gt;30)state.student.activity=state.student.activity.slice(0,30);
+    save(state);
+    showScreen(role==='teacher'?'teacher':'student');
+    if(role==='teacher')renderTeacher();else sNav('home');
+    return;
+  }
+  
+  const added=state.addedStudents.find(s=&gt;s.username===u&amp;&amp;s.password===p);
+  if(added){
+    currentUser={type:'added',data:added};
+    added.lastLogin=Date.now();
+    added.activity.unshift({icon:'🔓',text:'<span lang="hi-IN">تسجيل دخول</span>',type:'success',time:Date.now()});
+    save(state);
+    showScreen('student');sNav('home');
+    return;
+  }
+  
+  errEl.textContent='<span lang="hi-IN">بيانات الدخول غير صحيحة</span>';errEl.hidden=false;
+};
+
+window.logout=()=&gt;{
+  currentUser=null;
+  $('screen-login').hidden=false;
+  $('screen-teacher').hidden=true;
+  $('screen-student').hidden=true;
+  ['student-username','student-password','teacher-username','teacher-password'].forEach(id=&gt;$(id).value='');
+};
+
+function showScreen(s){
+  $('screen-login').hidden=s!=='login';
+  $('screen-teacher').hidden=s!=='teacher';
+  $('screen-student').hidden=s!=='student';
+  window.scrollTo(0,0);
+}
+
+function getStudent(){return currentUser?currentUser.data:state.student;}
+
+/* TEACHER */
+window.tNav=nav=&gt;{
+  $('t-list').hidden=nav!=='list';
+  $('t-detail').hidden=nav!=='detail';
+  $('t-insights').hidden=nav!=='insights';
+  document.querySelectorAll('[data-tnav]').forEach(b=&gt;b.classList.toggle('side-btn--active',b.getAttribute('data-tnav')===nav));
+  if(nav==='insights')renderInsights();
+};
+
+function renderTeacher(){
+  const all=[state.student,...state.addedStudents];
+  $('t-total').textContent=all.length;
+  $('t-avg').textContent=Math.round(all.reduce((s,x)=&gt;s+calcAvg(x),0)/all.length)+'%';
+  $('t-new').textContent=state.addedStudents.filter(s=&gt;s.lastLogin).length;
+  
+  $('students-grid').innerHTML=all.map((s,i)=&gt;{
+    const avg=calcAvg(s);
+    const isNew=s.lastLogin&amp;&amp;i&gt;0;
+    return `&lt;div class=&quot;student-card${isNew?' student-card--new':''}&quot; onclick=&quot;openStudent(${i})&quot;&gt;
+      &lt;div class=&quot;student-card__head&quot;&gt;
+        &lt;div class=&quot;student-card__avatar&quot;&gt;${esc(s.name.charAt(0))}&lt;/div&gt;
+        &lt;div&gt;
+          &lt;div class=&quot;student-card__name&quot;&gt;${esc(s.name)}${isNew?'&lt;span class=&quot;student-card__badge&quot;&gt;<span lang="hi-IN">جديد</span>&lt;/span&gt;':''}&lt;/div&gt;
+          &lt;div class=&quot;student-card__meta&quot;&gt;${esc(s.grade)} • ${esc(s.username)}&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;student-card__progress-label&quot;&gt;&lt;span&gt;<span lang="hi-IN">التقدم</span>&lt;/span&gt;&lt;span&gt;${avg}%&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;student-card__bar&quot;&gt;&lt;div class=&quot;student-card__bar-fill&quot; style=&quot;width:${avg}%&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;student-card__last&quot;&gt;<span lang="hi-IN">آخر دخول</span>: ${timeAgo(s.lastLogin)}&lt;/div&gt;
+    &lt;/div&gt;`;
+  }).join('');
+}
+
+window.openStudent=idx=&gt;{
+  tNav('detail');
+  const all=[state.student,...state.addedStudents];
+  const s=all[idx];
+  const avg=calcAvg(s);
+  const last=s.lastLogin?new Date(s.lastLogin).toLocaleString('ar-EG'):'—';
+  const created=new Date(s.createdAt).toLocaleDateString('ar-EG');
+  
+  let html=`&lt;button class=&quot;btn btn--ghost btn--sm&quot; onclick=&quot;tNav('list')&quot; style=&quot;margin-bottom:16px&quot;&gt;← <span lang="hi-IN">رجوع</span>&lt;/button&gt;
+    &lt;div class=&quot;detail-card&quot;&gt;
+      &lt;div class=&quot;detail-header&quot;&gt;
+        &lt;div class=&quot;detail-avatar&quot;&gt;${esc(s.name.charAt(0))}&lt;/div&gt;
+        &lt;div&gt;&lt;div class=&quot;detail-name&quot;&gt;${esc(s.name)}&lt;/div&gt;&lt;div class=&quot;detail-meta&quot;&gt;${esc(s.grade)} • ${esc(s.username)}&lt;/div&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;stats-row&quot;&gt;
+        &lt;div class=&quot;stat&quot;&gt;&lt;div class=&quot;stat__v&quot;&gt;${avg}%&lt;/div&gt;&lt;div class=&quot;stat__l&quot;&gt;<span lang="hi-IN">التقدم</span>&lt;/div&gt;&lt;/div&gt;
+        &lt;div class=&quot;stat&quot;&gt;&lt;div class=&quot;stat__v&quot; style=&quot;font-size:14px&quot;&gt;${last.split(',')[0]}&lt;/div&gt;&lt;div class=&quot;stat__l&quot;&gt;<span lang="hi-IN">آخر دخول</span>&lt;/div&gt;&lt;/div&gt;
+        &lt;div class=&quot;stat&quot;&gt;&lt;div class=&quot;stat__v&quot; style=&quot;font-size:14px&quot;&gt;${created}&lt;/div&gt;&lt;div class=&quot;stat__l&quot;&gt;<span lang="hi-IN">الإنشاء</span>&lt;/div&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;detail-card&quot;&gt;&lt;h2&gt;🎛️ <span lang="hi-IN">التحكم في المواد</span>&lt;/h2&gt;`;
+  
+  Object.keys(CURRICULUM).forEach(subj=&gt;{
+    const v=s.mastery[subj]||0;
+    const sus=s.suspended[subj];
+    html+=`&lt;div class=&quot;subject-control${sus?' subject-control--suspended':''}&quot;&gt;
+      &lt;div class=&quot;subject-control__info&quot;&gt;
+        &lt;div class=&quot;subject-control__name&quot;&gt;${CURRICULUM[subj].icon} ${esc(subj)}&lt;/div&gt;
+        &lt;div class=&quot;subject-control__score&quot;&gt;${v}%&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;input type=&quot;number&quot; class=&quot;subject-control__input&quot; min=&quot;0&quot; max=&quot;100&quot; value=&quot;${v}&quot; onchange=&quot;setScore(${idx},'${subj}',this.value)&quot;/&gt;
+      &lt;button class=&quot;btn btn--${sus?'success':'danger'} btn--sm&quot; onclick=&quot;toggleSus(${idx},'${subj}')&quot;&gt;${sus?'<span lang="hi-IN">تفعيل':'إيقاف</span>'}&lt;/button&gt;
+    &lt;/div&gt;`;
+  });
+  html+=`&lt;/div&gt;&lt;div class=&quot;detail-card&quot;&gt;&lt;h2&gt;📋 <span lang="hi-IN">السجل </span>(${s.activity.length})&lt;/h2&gt;&lt;div class=&quot;activity-list&quot;&gt;`;
+  if(!s.activity.length)html+='&lt;div style=&quot;color:var(--text-dim);padding:20px;text-align:center&quot;&gt;<span lang="hi-IN">لا يوجد نشاط</span>&lt;/div&gt;';
+  s.activity.slice(0,30).forEach(a=&gt;{
+    html+=`&lt;div class=&quot;activity-item activity-item--${a.type||'info'}&quot;&gt;
+      &lt;div class=&quot;activity-item__icon&quot;&gt;${a.icon}&lt;/div&gt;
+      &lt;div class=&quot;activity-item__content&quot;&gt;
+        &lt;div class=&quot;activity-item__text&quot;&gt;${esc(a.text)}&lt;/div&gt;
+        &lt;div class=&quot;activity-item__time&quot;&gt;${new Date(a.time).toLocaleString('ar-EG')}&lt;/div&gt;
+      &lt;/div&gt;&lt;/div&gt;`;
+  });
+  html+='&lt;/div&gt;&lt;/div&gt;';
+  
+  $('t-detail').innerHTML=html;
+};
+
+window.setScore=(idx,subj,val)=&gt;{
+  const all=[state.student,...state.addedStudents];
+  const s=all[idx];
+  const n=Math.max(0,Math.min(100,parseInt(val)||0));
+  s.mastery[subj]=n;
+  s.activity.unshift({icon:'✏️',text:`<span lang="hi-IN">المعلم عدّل </span>${subj} <span lang="hi-IN">إلى </span>${n}%`,type:'warning',time:Date.now()});
+  if(s.activity.length&gt;30)s.activity=s.activity.slice(0,30);
+  save(state);openStudent(idx);renderTeacher();
+};
+
+window.toggleSus=(idx,subj)=&gt;{
+  const all=[state.student,...state.addedStudents];
+  const s=all[idx];
+  s.suspended[subj]=!s.suspended[subj];
+  s.activity.unshift({icon:s.suspended[subj]?'⛔':'✅',text:(s.suspended[subj]?'<span lang="hi-IN">أوقف ':'فعّل </span>')+subj,type:s.suspended[subj]?'danger':'success',time:Date.now()});
+  if(s.activity.length&gt;30)s.activity=s.activity.slice(0,30);
+  save(state);openStudent(idx);renderTeacher();
+};
+
+function renderInsights(){
+  const all=[state.student,...state.addedStudents];
+  $('t-insights').innerHTML=`&lt;div class=&quot;page-head&quot;&gt;&lt;h1&gt;<span lang="hi-IN">رؤية عامة</span>&lt;/h1&gt;&lt;p&gt;<span lang="hi-IN">أداء كل الطلاب</span>&lt;/p&gt;&lt;/div&gt;`+
+    all.map(s=&gt;{
+      const avg=calcAvg(s);
+      return `&lt;div class=&quot;detail-card&quot;&gt;
+        &lt;h2&gt;${esc(s.name)} &lt;span style=&quot;font-size:13px;color:var(--text-muted);font-weight:600&quot;&gt;${esc(s.grade)}&lt;/span&gt;&lt;/h2&gt;
+        &lt;div class=&quot;overall-progress__bar&quot;&gt;&lt;div class=&quot;overall-progress__fill&quot; style=&quot;width:${avg}%&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;div style=&quot;text-align:center;margin-top:14px;font-size:22px;font-weight:900;color:#a5b4fc&quot;&gt;${avg}%&lt;/div&gt;
+      &lt;/div&gt;`;
+    }).join('');
+}
+
+/* STUDENT */
+window.toggleSide=()=&gt;{$('s-side').classList.toggle('is-open');};
+
+window.sNav=nav=&gt;{
+  ['home','subjects','lesson','progress','cert'].forEach(v=&gt;{
+    const el=$('s-'+v);if(el)el.hidden=v!==nav;
+  });
+  document.querySelectorAll('[data-snav]').forEach(b=&gt;b.classList.toggle('side-btn--active',b.getAttribute('data-snav')===nav));
+  $('s-side').classList.remove('is-open');
+  if(nav==='home')renderHome();
+  if(nav==='subjects')renderSubjects();
+  if(nav==='progress')renderProgress();
+  if(nav==='cert')renderCert();
+};
+
+function renderHome(){
+  const s=getStudent();
+  const avg=calcAvg(s);
+  const last=s.lastLogin?new Date(s.lastLogin).toLocaleString('ar-EG'):'—';
+  $('s-header-name').textContent=s.name;
+  $('s-home').innerHTML=`
+    &lt;div class=&quot;welcome-banner&quot;&gt;
+      &lt;div class=&quot;welcome-avatar&quot;&gt;${esc(s.name.charAt(0))}&lt;/div&gt;
+      &lt;div&gt;&lt;div class=&quot;welcome-title&quot;&gt;<span lang="hi-IN">أهلاً، </span>&lt;span&gt;${esc(s.name)}&lt;/span&gt; 👋&lt;/div&gt;
+      &lt;div class=&quot;welcome-subtitle&quot;&gt;${esc(s.grade)} • <span lang="hi-IN">تحت إشراف فريق المعلمين</span>&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;overall-progress&quot;&gt;
+      &lt;div class=&quot;overall-progress__head&quot;&gt;&lt;span class=&quot;overall-progress__title&quot;&gt;📊 <span lang="hi-IN">التقدم الكلي</span>&lt;/span&gt;&lt;span class=&quot;overall-progress__value&quot;&gt;${avg}%&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;overall-progress__bar&quot;&gt;&lt;div class=&quot;overall-progress__fill&quot; id=&quot;s-fill&quot; style=&quot;width:0%&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;stats-row&quot;&gt;
+      &lt;div class=&quot;stat&quot;&gt;&lt;div class=&quot;stat__v&quot;&gt;${Object.keys(CURRICULUM).length}&lt;/div&gt;&lt;div class=&quot;stat__l&quot;&gt;<span lang="hi-IN">المواد</span>&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;stat&quot;&gt;&lt;div class=&quot;stat__v&quot;&gt;${avg}%&lt;/div&gt;&lt;div class=&quot;stat__l&quot;&gt;<span lang="hi-IN">تقدمك</span>&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;stat&quot;&gt;&lt;div class=&quot;stat__v&quot; style=&quot;font-size:13px&quot;&gt;${last.split(',')[0]}&lt;/div&gt;&lt;div class=&quot;stat__l&quot;&gt;<span lang="hi-IN">آخر دخول</span>&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;`;
+  setTimeout(()=&gt;{const f=$('s-fill');if(f)f.style.width=avg+'%';},100);
+}
+
+function renderSubjects(){
+  const s=getStudent();
+  $('s-subjects').innerHTML=`&lt;div class=&quot;page-head&quot;&gt;&lt;h1&gt;📚 <span lang="hi-IN">المواد</span>&lt;/h1&gt;&lt;p&gt;<span lang="hi-IN">اضغط على مادة لبدء التعلم</span>&lt;/p&gt;&lt;/div&gt;
+    &lt;div class=&quot;subjects-grid&quot;&gt;`+
+    Object.keys(CURRICULUM).map(subj=&gt;{
+      const v=s.mastery[subj]||0;
+      const sus=s.suspended[subj];
+      return `&lt;div class=&quot;subject-card${sus?' subject-card--suspended':''}&quot; ${sus?'':`onclick=&quot;openSubject('${subj}')&quot;`}&gt;
+        &lt;div class=&quot;subject-card__icon&quot;&gt;${CURRICULUM[subj].icon}&lt;/div&gt;
+        &lt;div class=&quot;subject-card__name&quot;&gt;${esc(subj)}&lt;/div&gt;
+        &lt;div class=&quot;subject-card__progress-label&quot;&gt;&lt;span&gt;${CURRICULUM[subj].lessons.length} <span lang="hi-IN">دروس</span>&lt;/span&gt;&lt;span&gt;${v}%&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&quot;subject-card__bar&quot;&gt;&lt;div class=&quot;subject-card__bar-fill&quot; style=&quot;width:${v}%&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;/div&gt;`;
+    }).join('')+'&lt;/div&gt;';
+}
+
+window.openSubject=subj=&gt;{
+  const s=getStudent();
+  if(s.suspended[subj])return;
+  const info=CURRICULUM[subj];
+  $('s-lesson').innerHTML=`&lt;button class=&quot;btn btn--ghost btn--sm&quot; onclick=&quot;sNav('subjects')&quot; style=&quot;margin-bottom:16px&quot;&gt;← <span lang="hi-IN">رجوع</span>&lt;/button&gt;
+    &lt;div class=&quot;page-head&quot;&gt;&lt;h1&gt;${info.icon} ${esc(subj)}&lt;/h1&gt;&lt;p&gt;${info.lessons.length} <span lang="hi-IN">دروس</span>&lt;/p&gt;&lt;/div&gt;
+    &lt;div class=&quot;progress-list&quot;&gt;`+
+    info.lessons.map((l,i)=&gt;{
+      const key=subj+':'+l.name;
+      const v=s.lessonMastery[key]||0;
+      return `&lt;div class=&quot;progress-item&quot; style=&quot;cursor:pointer&quot; onclick=&quot;openLesson('${subj}',${i})&quot;&gt;
+        &lt;div class=&quot;progress-item__head&quot;&gt;
+          &lt;span class=&quot;progress-item__name&quot;&gt;${i+1}. ${esc(l.name)}&lt;/span&gt;
+          &lt;span class=&quot;progress-item__score&quot;&gt;${v}%&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;progress-item__bar&quot;&gt;&lt;div class=&quot;progress-item__fill&quot; style=&quot;width:${v}%&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;/div&gt;`;
+    }).join('')+'&lt;/div&gt;';
+  sNav('lesson');
+};
+
+window.openLesson=(subj,idx)=&gt;{
+  quiz={subject:subj,lesson:CURRICULUM[subj].lessons[idx],index:0,selected:null,answered:false,correct:0};
+  renderQuiz();
+};
+
+function renderQuiz(){
+  const q=quiz.lesson.questions;
+  if(quiz.index&gt;=q.length){renderResult();return;}
+  const cur=q[quiz.index];
+  $('s-lesson').innerHTML=`
+    &lt;button class=&quot;btn btn--ghost btn--sm&quot; onclick=&quot;openSubject('${quiz.subject}')&quot; style=&quot;margin-bottom:16px&quot;&gt;← <span lang="hi-IN">رجوع</span>&lt;/button&gt;
+    &lt;div class=&quot;lesson-header&quot;&gt;&lt;span class=&quot;lesson-badge&quot;&gt;${esc(quiz.subject)}&lt;/span&gt;&lt;h1 class=&quot;lesson-title&quot;&gt;${esc(quiz.lesson.name)}&lt;/h1&gt;&lt;/div&gt;
+    &lt;div class=&quot;lesson-content&quot;&gt;📖 ${esc(quiz.lesson.content)}&lt;/div&gt;
+    &lt;div class=&quot;quiz-card&quot;&gt;
+      &lt;div class=&quot;quiz-progress-text&quot;&gt;<span lang="hi-IN">السؤال </span>${quiz.index+1} <span lang="hi-IN">من </span>${q.length}&lt;/div&gt;
+      &lt;div class=&quot;quiz-progress-bar&quot;&gt;&lt;div class=&quot;quiz-progress-fill&quot; style=&quot;width:${(quiz.index/q.length)*100}%&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;quiz-question&quot;&gt;${esc(cur.text)}&lt;/div&gt;
+      &lt;div class=&quot;quiz-options&quot; id=&quot;qopts&quot;&gt;${cur.options.map((o,i)=&gt;`&lt;button class=&quot;quiz-option&quot; onclick=&quot;pickAns(${i})&quot;&gt;${esc(o)}&lt;/button&gt;`).join('')}&lt;/div&gt;
+      &lt;div id=&quot;qfb&quot;&gt;&lt;/div&gt;
+      &lt;button class=&quot;btn btn--primary btn--full&quot; id=&quot;qsub&quot; onclick=&quot;submitAns()&quot; disabled&gt;<span lang="hi-IN">تحقق</span>&lt;/button&gt;
+      &lt;button class=&quot;btn btn--primary btn--full&quot; id=&quot;qnext&quot; onclick=&quot;nextQ()&quot; hidden style=&quot;margin-top:8px&quot;&gt;<span lang="hi-IN">السؤال التالي</span>&lt;/button&gt;
+    &lt;/div&gt;`;
+}
+
+window.pickAns=i=&gt;{
+  if(quiz.answered)return;
+  quiz.selected=i;
+  document.querySelectorAll('#qopts .quiz-option').forEach((b,idx)=&gt;b.classList.toggle('quiz-option--selected',idx===i));
+  $('qsub').disabled=false;
+};
+
+window.submitAns=()=&gt;{
+  if(quiz.answered||quiz.selected===null)return;
+  quiz.answered=true;
+  const cur=quiz.lesson.questions[quiz.index];
+  const ok=quiz.selected===cur.correct;
+  if(ok)quiz.correct++;
+  document.querySelectorAll('#qopts .quiz-option').forEach((b,idx)=&gt;{
+    b.disabled=true;b.classList.remove('quiz-option--selected');
+    if(idx===cur.correct)b.classList.add('quiz-option--correct');
+    else if(idx===quiz.selected)b.classList.add('quiz-option--wrong');
+  });
+  const fb=$('qfb');
+  fb.className='quiz-feedback quiz-feedback--'+(ok?'success':'warning');
+  fb.innerHTML=ok?'&lt;strong&gt;✅ <span lang="hi-IN">إجابة صحيحة</span>!&lt;/strong&gt; <span lang="hi-IN">أحسنت</span>!':`&lt;strong&gt;🌱 <span lang="hi-IN">محاولة جيدة</span>&lt;/strong&gt;&lt;br&gt;<span lang="hi-IN">الإجابة الصحيحة</span>: &lt;strong&gt;${esc(cur.options[cur.correct])}&lt;/strong&gt;`;
+  $('qsub').hidden=true;$('qnext').hidden=false;
+  updateMastery(ok);
+};
+
+function updateMastery(ok){
+  const s=getStudent();
+  const key=quiz.subject+':'+quiz.lesson.name;
+  const cur=s.lessonMastery[key]||50;
+  s.lessonMastery[key]=ok?Math.min(100,cur+10):Math.max(0,cur-5);
+  const vals=CURRICULUM[quiz.subject].lessons.map(l=&gt;s.lessonMastery[quiz.subject+':'+l.name]||0);
+  s.mastery[quiz.subject]=Math.round(vals.reduce((a,b)=&gt;a+b,0)/vals.length);
+  s.activity.unshift({icon:ok?'✅':'📝',text:(ok?'<span lang="hi-IN">أجاب صح':'أخطأ</span>')+' <span lang="hi-IN">في </span>'+quiz.lesson.name,type:ok?'success':'warning',time:Date.now()});
+  if(s.activity.length&gt;30)s.activity=s.activity.slice(0,30);
+  save(state);
+}
+
+window.nextQ=()=&gt;{quiz.index++;quiz.selected=null;quiz.answered=false;renderQuiz();};
+
+function renderResult(){
+  const total=quiz.lesson.questions.length;
+  const pct=Math.round((quiz.correct/total)*100);
+  let icon,title,msg;
+  if(pct&gt;=80){icon='🏆';title='<span lang="hi-IN">ممتاز</span>!';msg=`<span lang="hi-IN">أجبت </span>${quiz.correct} <span lang="hi-IN">من </span>${total}`;}
+  else if(pct&gt;=50){icon='🎯';title='<span lang="hi-IN">جيد</span>!';msg=`<span lang="hi-IN">أجبت </span>${quiz.correct} <span lang="hi-IN">من </span>${total}`;}
+  else{icon='🌱';title='<span lang="hi-IN">بداية جيدة</span>';msg=`<span lang="hi-IN">أجبت </span>${quiz.correct} <span lang="hi-IN">من </span>${total}`;}
+  $('s-lesson').innerHTML=`&lt;div class=&quot;detail-card&quot; style=&quot;text-align:center;padding:48px&quot;&gt;
+    &lt;div style=&quot;font-size:72px;margin-bottom:16px&quot;&gt;${icon}&lt;/div&gt;
+    &lt;h1 style=&quot;font-size:26px;margin-bottom:12px&quot;&gt;${title}&lt;/h1&gt;
+    &lt;p style=&quot;color:var(--text-muted);margin-bottom:28px;font-size:15px&quot;&gt;${msg}&lt;/p&gt;
+    &lt;div style=&quot;display:flex;gap:10px;justify-content:center;flex-wrap:wrap&quot;&gt;
+      &lt;button class=&quot;btn btn--primary&quot; onclick=&quot;openSubject('${quiz.subject}')&quot;&gt;<span lang="hi-IN">رجوع للدروس</span>&lt;/button&gt;
+      &lt;button class=&quot;btn btn--ghost&quot; onclick=&quot;sNav('home')&quot;&gt;<span lang="hi-IN">الرئيسية</span>&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;`;
+}
+
+function renderProgress(){
+  const s=getStudent();
+  $('s-progress').innerHTML=`&lt;div class=&quot;page-head&quot;&gt;&lt;h1&gt;📊 <span lang="hi-IN">تقدمي</span>&lt;/h1&gt;&lt;p&gt;<span lang="hi-IN">مستواك في كل مادة</span>&lt;/p&gt;&lt;/div&gt;
+    &lt;div class=&quot;progress-list&quot;&gt;`+
+    Object.keys(CURRICULUM).map(subj=&gt;{
+      const v=s.mastery[subj]||0;
+      return `&lt;div class=&quot;progress-item&quot;&gt;
+        &lt;div class=&quot;progress-item__head&quot;&gt;
+          &lt;span class=&quot;progress-item__name&quot;&gt;${CURRICULUM[subj].icon} ${esc(subj)}&lt;/span&gt;
+          &lt;span class=&quot;progress-item__score&quot;&gt;${v}%&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;progress-item__bar&quot;&gt;&lt;div class=&quot;progress-item__fill&quot; style=&quot;width:${v}%&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;/div&gt;`;
+    }).join('')+'&lt;/div&gt;';
+}
+
+function renderCert(){
+  const s=getStudent();
+  const avg=calcAvg(s);
+  const d=new Date().toLocaleDateString('ar-EG',{year:'numeric',month:'long'});
+  const serial='NAW-2026-'+String(Math.floor(Math.random()*900+100)).padStart(3,'0');
+  
+  $('s-cert').innerHTML=`
+    &lt;div class=&quot;page-head&quot; style=&quot;text-align:center;margin-bottom:24px&quot;&gt;&lt;h1&gt;🏆 <span lang="hi-IN">شهادة التقدير</span>&lt;/h1&gt;&lt;p&gt;<span lang="hi-IN">استحققتها بجهدك</span>&lt;/p&gt;&lt;/div&gt;
+    &lt;div class=&quot;cert-wrap&quot;&gt;
+      &lt;div class=&quot;cert&quot;&gt;
+        &lt;div class=&quot;cert__frame&quot;&gt;
+          &lt;div class=&quot;cert__inner&quot;&gt;
+            &lt;div class=&quot;cert__watermark&quot;&gt;Nawair&lt;/div&gt;
+            &lt;div class=&quot;cert__orn cert__orn--tl&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;cert__orn cert__orn--tr&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;cert__orn cert__orn--bl&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;cert__orn cert__orn--br&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;cert__content&quot;&gt;
+              &lt;div class=&quot;cert__medal&quot;&gt;🏆&lt;/div&gt;
+              &lt;div class=&quot;cert__ribbon&quot;&gt;<span lang="hi-IN">امتياز</span>&lt;/div&gt;
+              &lt;h2 class=&quot;cert__title&quot;&gt;<span lang="hi-IN">شهادة تقدير</span>&lt;/h2&gt;
+              &lt;p class=&quot;cert__presented&quot;&gt;<span lang="hi-IN">تُمنح هذه الشهادة بكل فخر واعتزاز إلى</span>&lt;/p&gt;
+              &lt;div class=&quot;cert__name-wrap&quot;&gt;&lt;span class=&quot;cert__name&quot;&gt;${esc(s.name)}&lt;/span&gt;&lt;/div&gt;
+              &lt;p class=&quot;cert__reason&quot;&gt;<span lang="hi-IN">تقديرًا لاجتهاده وتفوقه، وتحقيقه نسبة تقدم </span>&lt;strong&gt;${avg}%&lt;/strong&gt; <span lang="hi-IN">في المواد الدراسية، واجتيازه التقييم الشامل بامتياز</span>&lt;/p&gt;
+              &lt;div class=&quot;cert__footer&quot;&gt;
+                &lt;div class=&quot;cert__sig&quot;&gt;
+                  &lt;div class=&quot;cert__sig-line&quot;&gt;&lt;/div&gt;
+                  &lt;div class=&quot;cert__sig-name&quot;&gt;<span lang="hi-IN">فريق المعلمين</span>&lt;/div&gt;
+                  &lt;div class=&quot;cert__sig-role&quot;&gt;<span lang="hi-IN">الإشراف العام</span>&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;cert__seal&quot;&gt;
+                  &lt;svg width=&quot;86&quot; height=&quot;86&quot; viewBox=&quot;0 0 100 100&quot;&gt;
+                    &lt;defs&gt;&lt;radialGradient id=&quot;sg&quot;&gt;&lt;stop offset=&quot;0&quot; stop-color=&quot;#fef3c7&quot;/&gt;&lt;stop offset=&quot;1&quot; stop-color=&quot;#b45309&quot;/&gt;&lt;/radialGradient&gt;&lt;/defs&gt;
+                    &lt;circle cx=&quot;50&quot; cy=&quot;50&quot; r=&quot;46&quot; fill=&quot;url(#sg)&quot; stroke=&quot;#78350f&quot; stroke-width=&quot;2.5&quot;/&gt;
+                    &lt;circle cx=&quot;50&quot; cy=&quot;50&quot; r=&quot;38&quot; fill=&quot;none&quot; stroke=&quot;#78350f&quot; stroke-width=&quot;1.5&quot; opacity=&quot;.5&quot;/&gt;
+                    &lt;polygon points=&quot;50,18 55,38 76,38 60,51 66,72 50,60 34,72 40,51 24,38 45,38&quot; fill=&quot;#78350f&quot; opacity=&quot;.7&quot;/&gt;
+                    &lt;text x=&quot;50&quot; y=&quot;82&quot; text-anchor=&quot;middle&quot; fill=&quot;#78350f&quot; font-size=&quot;9&quot; font-weight=&quot;900&quot;&gt;NAWAIR&lt;/text&gt;
+                  &lt;/svg&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;cert__sig&quot;&gt;
+                  &lt;div class=&quot;cert__sig-line&quot;&gt;&lt;/div&gt;
+                  &lt;div class=&quot;cert__sig-name&quot;&gt;${d}&lt;/div&gt;
+                  &lt;div class=&quot;cert__sig-role&quot;&gt;<span lang="hi-IN">التاريخ</span>&lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;cert__serial&quot;&gt;<span lang="hi-IN">رقم الشهادة</span>: ${serial} • Nawair | <span lang="hi-IN">حصص</span>&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div style=&quot;text-align:center;margin-top:20px&quot;&gt;&lt;button class=&quot;btn btn--primary btn--lg&quot; onclick=&quot;window.print()&quot;&gt;🖨️ <span lang="hi-IN">طباعة الشهادة</span>&lt;/button&gt;&lt;/div&gt;
+    &lt;/div&gt;`;
+}
+
+document.addEventListener('DOMContentLoaded',()=&gt;{switchRole('student');});
+})();</pre>
+</body>
+</html>
